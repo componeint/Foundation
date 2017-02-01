@@ -36,15 +36,13 @@ class FoundationServiceProvider extends ServiceProvider
         $this->app->register(\App\Components\DBLog\Providers\DBLogServiceProvider::class);
         $this->app->register(\App\Components\Pagination\Providers\PaginationServiceProvider::class);
         $this->app->register(\App\Components\QueryBasic\Providers\QueryBasicServiceProvider::class);
-        //$this->app->register(\App\Components\JwtAuth\Providers\JwtAuthServiceProvider::class);
-        //$this->app->register(\App\Components\Oauth2\Providers\Oauth2ServiceProvider::class);
 
         // component
-        $this->app->register(\Consigliere\Components\ServiceProvider::class);
+        // $this->app->register(\Consigliere\Components\ServiceProvider::class);
 
         // Load the Facade aliases
-        $loader = AliasLoader::getInstance();
-        $loader->alias('Component', \Consigliere\Components\Facades\Component::class);
+        // $loader = AliasLoader::getInstance();
+        // $loader->alias('Component', \Consigliere\Components\Facades\Component::class);
     }
 
     /**
