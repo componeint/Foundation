@@ -11,5 +11,12 @@
         "psr-4": {
             "App\\Components\\Foundation\\": ""
         }
-    }
+    },
+  "require"    : {
+    "illuminate/support"  : "5.3.*",
+    "illuminate/contracts": "5.3.*",
+    "componeint/dblog"   : "0.1.*",
+    "componeint/pagination"   : "0.1.*",
+    "componeint/querybasic"   : "0.1.*"
+  }
 }
