@@ -1,5 +1,5 @@
 {
-    "name": "componeint/foundation",
+    "name": "componentsv/foundation",
     "description": "",
     "authors": [
         {
@@ -15,8 +15,8 @@
   "require"    : {
     "illuminate/support"  : "5.3.*",
     "illuminate/contracts": "5.3.*",
-    "componeint/dblog"   : "0.1.*",
-    "componeint/pagination"   : "0.1.*",
-    "componeint/querybasic"   : "0.1.*"
+    "componentsv/dblog"   : "0.1.*",
+    "componentsv/pagination"   : "0.1.*",
+    "componentsv/querybasic"   : "0.1.*"
   }
 }
