@@ -13,10 +13,10 @@
         }
     },
   "require"    : {
-    "illuminate/support"  : "5.3.*",
-    "illuminate/contracts": "5.3.*",
-    "componentsv/dblog"   : "0.1.*",
-    "componentsv/pagination"   : "0.1.*",
-    "componentsv/querybasic"   : "0.1.*"
+    "illuminate/support"  : "5.3.*|5.4.*",
+    "illuminate/contracts": "5.3.*|5.4.*",
+    "componentsv/dblog"   : "0.2.*",
+    "componentsv/pagination"   : "0.2.*",
+    "componentsv/querybasic"   : "0.2.*"
   }
 }
