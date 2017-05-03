@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components\Pagination\Providers;
+namespace App\Components\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -32,7 +32,7 @@ class PaginationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(\App\Components\Pagination\Providers\PaginationResponseMacroServiceProvider::class);
+        $this->app->register(\App\Components\Foundation\Providers\PaginationResponseMacroServiceProvider::class);
     }
 
     /**
