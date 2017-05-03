@@ -34,8 +34,8 @@ class FoundationServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(\App\Components\DBLog\Providers\DBLogServiceProvider::class);
-        $this->app->register(\App\Components\Pagination\Providers\PaginationServiceProvider::class);
-        $this->app->register(\App\Components\QueryBasic\Providers\QueryBasicServiceProvider::class);
+        $this->app->register(\App\Components\Foundation\Providers\PaginationServiceProvider::class);
+        $this->app->register(\App\Components\Foundation\Providers\QueryBasicServiceProvider::class);
 
         // component
         // $this->app->register(\Consigliere\Components\ServiceProvider::class);
