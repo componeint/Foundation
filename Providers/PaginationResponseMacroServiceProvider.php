@@ -4,7 +4,7 @@
  * Created by @rn on 12/16/2016 3:09 PM.
  */
 
-namespace App\Components\Pagination\Providers;
+namespace App\Components\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
