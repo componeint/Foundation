@@ -1,15 +1,15 @@
 {
-    "name": "Foundation",
-    "alias": "foundation",
-    "description": "",
-    "keywords": [],
-    "active": 1,
-    "order": 0,
-    "providers": [
-        "App\\Components\\Foundation\\Providers\\FoundationServiceProvider"
-    ],
-    "aliases":{},
-    "files": [
-        "start.php"
-    ]
+  "name"       : "Foundation",
+  "alias"      : "foundation",
+  "description": "",
+  "keywords"   : [],
+  "active"     : 1,
+  "order"      : 0,
+  "providers"  : [
+    "App\\Components\\Foundation\\Providers\\FoundationServiceProvider"
+  ],
+  "aliases"    : {},
+  "files"      : [
+    "start.php"
+  ]
 }
