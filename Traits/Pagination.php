@@ -18,7 +18,7 @@ trait Pagination
     protected function dataCount(array $param = [])
     {
         try {
-            $table   = (isset($param['table'])) ? $param['table'] : '';
+            $table = (isset($param['table'])) ? $param['table'] : '';
 
             $records = DB::table($table)->count();
         } catch (\Exception $e) {
@@ -43,7 +43,7 @@ trait Pagination
     protected function dataLists($from, $limit, array $param = [])
     {
         try {
-            $table   = (isset($param['table'])) ? $param['table'] : '';
+            $table = (isset($param['table'])) ? $param['table'] : '';
 
             $records = DB::table($table)->skip($from)->take($limit)->orderBy('id', 'desc')->get();
         } catch (\Exception $e) {
@@ -76,7 +76,7 @@ trait Pagination
     }
 
     /**
-     * @param null  $total
+     * @param null $total
      * @param array $lists
      * @param array $param
      *
