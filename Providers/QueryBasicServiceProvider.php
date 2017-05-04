@@ -43,10 +43,10 @@ class QueryBasicServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('querybasic.php'),
+            __DIR__ . '/../Config/config.php' => config_path('querybasic.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'querybasic'
+            __DIR__ . '/../Config/config.php', 'querybasic'
         );
     }
 
@@ -59,13 +59,13 @@ class QueryBasicServiceProvider extends ServiceProvider
     {
         $viewPath = base_path('resources/views/modules/querybasic');
 
-        $sourcePath = __DIR__.'/../Resources/views';
+        $sourcePath = __DIR__ . '/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
+            $sourcePath => $viewPath,
         ]);
 
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
+        $this->loadViewsFrom(array_merge(array_map(function($path) {
             return $path . '/modules/querybasic';
         }, \Config::get('view.paths')), [$sourcePath]), 'querybasic');
     }
@@ -82,7 +82,7 @@ class QueryBasicServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'querybasic');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'querybasic');
+            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'querybasic');
         }
     }
 

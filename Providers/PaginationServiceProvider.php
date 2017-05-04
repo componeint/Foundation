@@ -43,10 +43,10 @@ class PaginationServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('pagination.php'),
+            __DIR__ . '/../Config/config.php' => config_path('pagination.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'pagination'
+            __DIR__ . '/../Config/config.php', 'pagination'
         );
     }
 
@@ -59,13 +59,13 @@ class PaginationServiceProvider extends ServiceProvider
     {
         $viewPath = base_path('resources/views/modules/pagination');
 
-        $sourcePath = __DIR__.'/../Resources/views';
+        $sourcePath = __DIR__ . '/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
+            $sourcePath => $viewPath,
         ]);
 
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
+        $this->loadViewsFrom(array_merge(array_map(function($path) {
             return $path . '/modules/pagination';
         }, \Config::get('view.paths')), [$sourcePath]), 'pagination');
     }
@@ -82,7 +82,7 @@ class PaginationServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'pagination');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'pagination');
+            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'pagination');
         }
     }
 

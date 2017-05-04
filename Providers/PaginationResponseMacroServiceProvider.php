@@ -19,7 +19,7 @@ class PaginationResponseMacroServiceProvider extends ServiceProvider
     public function boot()
     {
         Response::macro('withPaging',
-            function (array $data = [], $page = 0, $limit = 0, $total = 0, array $lists = [], $path = '', array $param = []) {
+            function(array $data = [], $page = 0, $limit = 0, $total = 0, array $lists = [], $path = '', array $param = []) {
 
                 if (!empty($data)) {
                     extract($data);

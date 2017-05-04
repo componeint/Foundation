@@ -72,10 +72,10 @@ class FoundationServiceProvider extends ServiceProvider
         $sourcePath = __DIR__ . '/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
+            $sourcePath => $viewPath,
         ]);
 
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
+        $this->loadViewsFrom(array_merge(array_map(function($path) {
             return $path . '/modules/foundation';
         }, \Config::get('view.paths')), [$sourcePath]), 'foundation');
     }
