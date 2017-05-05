@@ -4,7 +4,7 @@ namespace App\Components\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class QueryBasicServiceProvider extends ServiceProvider
+class PaginationServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -32,7 +32,7 @@ class QueryBasicServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->register(\App\Components\Foundation\Providers\PaginationResponseMacroServiceProvider::class);
     }
 
     /**
@@ -43,10 +43,10 @@ class QueryBasicServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('querybasic.php'),
+            __DIR__ . '/../../Config/config.php' => config_path('pagination.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/config.php', 'querybasic'
+            __DIR__ . '/../../Config/config.php', 'pagination'
         );
     }
 
@@ -57,17 +57,17 @@ class QueryBasicServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = base_path('resources/views/modules/querybasic');
+        $viewPath = base_path('resources/views/components/pagination');
 
-        $sourcePath = __DIR__ . '/../Resources/views';
+        $sourcePath = __DIR__ . '/../../Resources/views';
 
         $this->publishes([
             $sourcePath => $viewPath,
         ]);
 
         $this->loadViewsFrom(array_merge(array_map(function($path) {
-            return $path . '/modules/querybasic';
-        }, \Config::get('view.paths')), [$sourcePath]), 'querybasic');
+            return $path . '/components/pagination';
+        }, \Config::get('view.paths')), [$sourcePath]), 'pagination');
     }
 
     /**
@@ -77,12 +77,12 @@ class QueryBasicServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = base_path('resources/lang/modules/querybasic');
+        $langPath = base_path('resources/lang/components/pagination');
 
         if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'querybasic');
+            $this->loadTranslationsFrom($langPath, 'pagination');
         } else {
-            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'querybasic');
+            $this->loadTranslationsFrom(__DIR__ . '/../../Resources/lang', 'pagination');
         }
     }
 

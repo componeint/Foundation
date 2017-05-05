@@ -3,9 +3,8 @@
 namespace App\Components\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\AliasLoader;
 
-class FoundationServiceProvider extends ServiceProvider
+class QueryBasicServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -33,16 +32,7 @@ class FoundationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(\App\Components\DBLog\Providers\DBLogServiceProvider::class);
-        $this->app->register(\App\Components\Foundation\Providers\PaginationServiceProvider::class);
-        $this->app->register(\App\Components\Foundation\Providers\QueryBasicServiceProvider::class);
-
-        // component
-        // $this->app->register(\Consigliere\Components\ServiceProvider::class);
-
-        // Load the Facade aliases
-        // $loader = AliasLoader::getInstance();
-        // $loader->alias('Component', \Consigliere\Components\Facades\Component::class);
+        //
     }
 
     /**
@@ -53,10 +43,10 @@ class FoundationServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('foundation.php'),
+            __DIR__ . '/../../Config/config.php' => config_path('querybasic.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/config.php', 'foundation'
+            __DIR__ . '/../../Config/config.php', 'querybasic'
         );
     }
 
@@ -67,17 +57,17 @@ class FoundationServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = base_path('resources/views/modules/foundation');
+        $viewPath = base_path('resources/views/components/querybasic');
 
-        $sourcePath = __DIR__ . '/../Resources/views';
+        $sourcePath = __DIR__ . '/../../Resources/views';
 
         $this->publishes([
             $sourcePath => $viewPath,
         ]);
 
         $this->loadViewsFrom(array_merge(array_map(function($path) {
-            return $path . '/modules/foundation';
-        }, \Config::get('view.paths')), [$sourcePath]), 'foundation');
+            return $path . '/components/querybasic';
+        }, \Config::get('view.paths')), [$sourcePath]), 'querybasic');
     }
 
     /**
@@ -87,12 +77,12 @@ class FoundationServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = base_path('resources/lang/modules/foundation');
+        $langPath = base_path('resources/lang/components/querybasic');
 
         if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'foundation');
+            $this->loadTranslationsFrom($langPath, 'querybasic');
         } else {
-            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'foundation');
+            $this->loadTranslationsFrom(__DIR__ . '/../../Resources/lang', 'querybasic');
         }
     }
 

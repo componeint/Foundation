@@ -3,8 +3,9 @@
 namespace App\Components\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
 
-class PaginationServiceProvider extends ServiceProvider
+class FoundationServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -32,7 +33,16 @@ class PaginationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(\App\Components\Foundation\Providers\PaginationResponseMacroServiceProvider::class);
+        $this->app->register(\App\Components\DBLog\Providers\DBLogServiceProvider::class);
+        $this->app->register(\App\Components\Foundation\Providers\PaginationServiceProvider::class);
+        $this->app->register(\App\Components\Foundation\Providers\QueryBasicServiceProvider::class);
+
+        // component
+        // $this->app->register(\Consigliere\Components\ServiceProvider::class);
+
+        // Load the Facade aliases
+        // $loader = AliasLoader::getInstance();
+        // $loader->alias('Component', \Consigliere\Components\Facades\Component::class);
     }
 
     /**
@@ -43,10 +53,10 @@ class PaginationServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('pagination.php'),
+            __DIR__ . '/../../Config/config.php' => config_path('foundation.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/config.php', 'pagination'
+            __DIR__ . '/../../Config/config.php', 'foundation'
         );
     }
 
@@ -57,17 +67,17 @@ class PaginationServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = base_path('resources/views/modules/pagination');
+        $viewPath = base_path('resources/views/components/foundation');
 
-        $sourcePath = __DIR__ . '/../Resources/views';
+        $sourcePath = __DIR__ . '/../../Resources/views';
 
         $this->publishes([
             $sourcePath => $viewPath,
         ]);
 
         $this->loadViewsFrom(array_merge(array_map(function($path) {
-            return $path . '/modules/pagination';
-        }, \Config::get('view.paths')), [$sourcePath]), 'pagination');
+            return $path . '/components/foundation';
+        }, \Config::get('view.paths')), [$sourcePath]), 'foundation');
     }
 
     /**
@@ -77,12 +87,12 @@ class PaginationServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = base_path('resources/lang/modules/pagination');
+        $langPath = base_path('resources/lang/modules/foundation');
 
         if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'pagination');
+            $this->loadTranslationsFrom($langPath, 'foundation');
         } else {
-            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'pagination');
+            $this->loadTranslationsFrom(__DIR__ . '/../../Resources/lang', 'foundation');
         }
     }
 
